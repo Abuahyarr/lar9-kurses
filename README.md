@@ -25,7 +25,7 @@ Sebuah aplikasi DB utk menyimpan Materi dan Tugas dari Guru/Pemberi Materi kepad
 ![Murid--List Tugas](public/images/4-list-tugas-murid.png)
 <hr>
 
-![Murid--List Tugas 2](public/images/5-list-tugas-murid-2.png)
+![Murid--List Tugas 2](public/images/5-detail-tugas-murid-2.png)
 <hr>
 
 ![Murid--Detail Tugas](public/images/5-detail-tugas-murid.png)
