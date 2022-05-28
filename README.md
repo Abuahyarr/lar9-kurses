@@ -15,17 +15,24 @@ Sebuah aplikasi DB utk menyimpan Materi dan Tugas dari Guru/Pemberi Materi kepad
 ## Project : Snapshot
 ![Frontpage](public/images/1-frontpage.png)
 <hr>
-![Login page](public/images/2-login.png)
+
+!["Login page"](public/images/2-login.png)
 <hr>
+
 ![User Profile](public/images/3-profile-login.png)
 <hr>
+
 ![Murid--List Tugas](public/images/4-list-tugas-murid.png)
 <hr>
+
 ![Murid--List Tugas 2](public/images/5-list-tugas-murid-2.png)
 <hr>
+
 ![Murid--Detail Tugas](public/images/5-detail-tugas-murid.png)
 <hr>
+
 ![Murid--Update/Kerjain Tugas](public/images/6-update-tugas-murid.png)
 <hr>
+
 ![Guru--Koreksi Tugas Murid](public/images/7-update-tugas-guru.png)
 <hr>
