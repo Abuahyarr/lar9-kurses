@@ -10,7 +10,9 @@ Sebuah aplikasi DB utk menyimpan Materi dan Tugas dari Guru/Pemberi Materi kepad
 - Admin template: AdminLTE3
 - FrontEnd template: EduStage dari ColorLib
 - Login/Logout MultiUser (Admin, Guru, Murid)
-- dll..
+- User: admin // pass123
+- User: user_1 // pass123
+- User: staff_1 // pass123
 
 ## Snapshots:
 ![Frontpage](public/images/1-frontpage.png)
