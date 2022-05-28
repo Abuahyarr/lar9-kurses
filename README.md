@@ -12,7 +12,7 @@ Sebuah aplikasi DB utk menyimpan Materi dan Tugas dari Guru/Pemberi Materi kepad
 - Login/Logout MultiUser (Admin, Guru, Murid)
 - dll..
 
-## Project : Snapshot
+## Snapshots:
 ![Frontpage](public/images/1-frontpage.png)
 <hr>
 
