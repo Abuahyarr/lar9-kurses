@@ -58,7 +58,7 @@
                 </div>
                 <hr>
                 <h3 class="profile-username text-center">{{$dtUser->name}}</h3>
-                <p class="text-muted text-center">{{$dtUser->role_id}}</p>
+                <p class="text-muted text-center">Role: {{$dtUser->role_id}}</p>
                 
                 <a href="{{url('account/changepass')}}" class="btn btn-primary btn-block"><b><i class="fa fa-key"></i>&nbsp;Ganti Password</b></a>
                 </div>
@@ -115,7 +115,8 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-sm btn-warning confirmation" data-flag="0" data-action="update"><i class="fa fa-save"></i>&nbsp;Simpan</button>
+                          <!-- <button type="submit" class="btn btn-sm btn-warning confirmation" data-flag="0" data-action="update"><i class="fa fa-save"></i>&nbsp;Simpan</button> -->
+                          <button type="submit" class="btn btn-sm btn-warning confirmBeforePost"><i class="fa fa-save"></i>&nbsp;Simpan</button>
                         </div>
                       </div>
                     </form>

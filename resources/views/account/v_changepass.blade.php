@@ -27,7 +27,7 @@
   <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="row">
-      <div class="col-4">
+      <div class="col-6">
         <!-- Horizontal Form -->
         <div class="card card-info">
           <div class="card-header">

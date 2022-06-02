@@ -81,7 +81,7 @@ class TugasExecController extends Controller
         if($request->isMethod('post')){
             // dd($request->all());
             $rules = [
-                'tugas-file' => 'file|required|mimes:zip,rar,7zip',
+                'tugas-file' => 'file|required|mimes:zip',
                 'notes' => 'required',
             ];
             $customMsg = [
@@ -128,28 +128,39 @@ class TugasExecController extends Controller
     public function updateTugasExecution(Request $request, $id)
     {
         // dd($request->all());
-        $roleId = Auth::user()->role_id;
-        // dd($roleId);
         $currentFile = $request['current-tugas-file'];
         $inputFile = $request->file('tugas-file');
         $tugasId = $request['tugas_id'];  
 
         if($inputFile != null && $currentFile == null){
             //--validasi:
-            $rules = ['tugas-file' => 'file|mimes:zip,rar,7zip','notes' => 'required',];
-            $customMsg = ['required' => 'Kolom :attribute masih kosong.','mimes' => 'Type file tidak sesuai.'];
+            $rules = [
+                'tugas-file' => 'file|mimes:zip',
+                'notes' => 'required',
+            ];
+            $customMsg = [
+                'required' => 'Kolom :attribute masih kosong.',
+                // 'notes.required' => 'Kolom Catatan harus diisi',
+                'mimes' => 'Type file tidak sesuai.'
+            ];
             $request->validate($rules, $customMsg); 
 
             $file = $request->file('tugas-file');
             $filename = $file->getClientOriginalName();
             $file->move(public_path('uploads/tugas_exec'), $filename);
             $postedData['evidence'] = $filename;
-            $postedData['status'] = 'selesai';
 
         }elseif($inputFile != null && $currentFile != null){
             //--validasi:
-            $rules = ['tugas-file' => 'file|mimes:zip,rar,7zip','notes' => 'required',];
-            $customMsg = ['required' => 'Kolom :attribute masih kosong.','mimes' => 'Type file tidak sesuai.'];
+            $rules = [
+                'tugas-file' => 'file|mimes:zip',
+                'notes' => 'required',
+            ];
+            $customMsg = [
+                'required' => 'Kolom :attribute masih kosong.',
+                // 'notes.required' => 'Kolom Catatan harus diisi',
+                'mimes' => 'Type file tidak sesuai.'
+            ];
             $request->validate($rules, $customMsg); 
 
             //--Delete old file:
@@ -162,44 +173,31 @@ class TugasExecController extends Controller
             $filename = $file->getClientOriginalName();
             $file->move(public_path('uploads/tugas_exec'), $filename);
             $postedData['evidence'] = $filename;
-            $postedData['status'] = 'selesai';
 
         }elseif($inputFile == null && $currentFile != null){
             //--validasi:
-            //--Validasi utk Guru:
-            if($roleId > 1){
-                $rules = [
-                    'status' => 'required',
-                    'points' => 'required|numeric|min:1',
-                    'notes2' => 'required',
-                ];
-                $postedData['status'] = $request->status;
-                $postedData['points'] = $request->points;
-                $postedData['notes2'] = $request->notes2;
-
-            }elseif($roleId == 1){
-                $rules = ['notes' => 'required'];
-                $postedData['status'] = 'selesai';
-            }
-            $customMsg = ['notes2.required' => 'Kolom Catatan Pemeriksa harus diisi','required' => 'Kolom :attribute masih kosong.','min' => 'Kolom :attribute masih 0.'];
-            $request->validate($rules, $customMsg);             
+            $rules = [
+                'notes' => 'required',
+            ];
+            $customMsg = [
+                'required' => 'Kolom :attribute masih kosong.',
+            ];
+            $request->validate($rules, $customMsg); 
         }
 
         // $this->upload_file_mode($request, $currentFile, $inputFile);
         //--
         $postedData['tugas_id'] = $tugasId;
+        $postedData['username'] = Auth::user()->username;
+        $postedData['status'] = 'selesai';
         $postedData['notes'] = $request->notes;
         $postedData['update_by'] = Auth::user()->username;
         $postedData['updated_at'] = date('Y-m-d H:i:s');
-        // dd($postedData);
+
         //--Saving method is INSERT:
         $execution = DB::table('tbl_tugas_exec')->where('id',$id)->update($postedData);
         if($execution){
-            if($roleId >= 1){
-                return redirect('admin/tugas/'.$tugasId.'/check')->with('success', 'Data Tugas berhasil diupdate');
-            }else{
-                return redirect('tugas-exec/'.$tugasId)->with('success', 'Data Tugas berhasil diupdate');
-            }
+            return redirect('tugas-exec/'.$tugasId)->with('success', 'Data Tugas berhasil diupdate');
         }else{
             return redirect()->back()->with('error', 'Error pada saat update data Tugas. Silahkan hubungi Administrator.');
         }
@@ -208,7 +206,7 @@ class TugasExecController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'tugas-file' => 'required|file|mimes:zip,rar,7zip|max:3072',
+            'tugas-file' => 'required|file|mimes:zip|max:3072',
             'notes' => 'required'
         ]);
 
@@ -253,7 +251,7 @@ class TugasExecController extends Controller
     {
         // die('uploadFile');
         $this->validate($request,[
-            'tugas-file' => 'required|file|mimes:zip,rar,7zip|max:3072'
+            'tugas-file' => 'required|file|mimes:zip|max:3072'
         ]);
 
         $file = $request->file('tugas-file');
@@ -303,7 +301,7 @@ class TugasExecController extends Controller
             //--INSERT mode:
             //--Just UPLOAD with new file:    
             $rules = [
-                'tugas-file' => 'file|mimes:zip,rar,7zip',
+                'tugas-file' => 'file|mimes:zip',
                 'notes' => 'required',
             ];
             $customMsg = [
@@ -322,7 +320,7 @@ class TugasExecController extends Controller
             //--UPDATE mode:
             //--DELETE old file then UPLOAD with new file:
             $rules = [
-                'tugas-file' => 'file|mimes:zip,rar,7zip',
+                'tugas-file' => 'file|mimes:zip',
                 'notes' => 'required',
             ];
             $customMsg = [

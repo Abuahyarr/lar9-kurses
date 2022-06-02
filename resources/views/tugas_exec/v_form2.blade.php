@@ -44,7 +44,7 @@
                   <div class="input-group mb-2">
                     <div class="custom-file">
                       <input type="hidden" name="current-tugas-file" value="{{ !empty($dtTugas) ? $dtTugas->evidence : null }}">
-                      <input type="file" name="tugas-file" class="custom-file-input" accept=".zip,.rar,.7zip" >
+                      <input type="file" name="tugas-file" class="custom-file-input" accept=".zip,.rar,.7zip" {{($loggedinInfo->role_id != 1)?'disabled':NULL}}>
                       <label class="custom-file-label" for="foto">Masukan File Lampiran</label>
                     </div>
                     @if(!empty($dtTugas))
@@ -53,6 +53,13 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Catatan</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" name="notes" id="notes" rows="4" placeholder="Isi Keterangan" {{($loggedinInfo->role_id != 1) ? 'readonly' : NULL}}>{{ !empty($dtTugas) ? $dtTugas->notes : old('notes') }}</textarea>
+                </div>
+              </div>
+              <hr>
               @if($loggedinInfo->role_id != 1)
               <!-- KLO yang login GURU, maka ada tombol Change Status dan Point -->
               <div class="form-group row">
@@ -74,13 +81,14 @@
                   <input type="text" class="form-control" name="points" value="{{ !empty($dtTugas) ? $dtTugas->points : null }}" placeholder="Isi Nilai Tugas">
                 </div>
               </div>
-              @endif
               <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Catatan</label>
+                <label class="col-sm-2 col-form-label">Catatan Pemeriksa</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control" name="notes" id="notes" rows="4" placeholder="Isi Keterangan">{{ !empty($dtTugas) ? $dtTugas->notes : old('notes') }}</textarea>
+                  <textarea class="form-control" name="notes2" id="notes2" rows="4" placeholder="Isi Keterangan">{{ !empty($dtTugas) ? $dtTugas->notes2 : old('notes2') }}</textarea>
                 </div>
               </div>
+              @endif
+              
             </div>
             <!-- /.card-body -->
             <div class="card-footer">

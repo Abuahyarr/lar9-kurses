@@ -138,12 +138,17 @@ class MateriController extends Controller
             'picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
-        $filename = $request->file('picture')->getClientOriginalName();
+        $file_name = $request->file('picture')->getClientOriginalName();
+        $fileName = pathinfo($file_name, PATHINFO_FILENAME);
+        $extension = pathinfo($file_name, PATHINFO_EXTENSION);
+        // $fileext = $request->file('picture')->getClientOriginalExtension();
         // $filepath = $request->file('picture')->store('public/uploads/materi');
-        $request->picture->move(public_path('uploads/materi'), $filename);
+        $newName = $fileName."-".$id.".".$extension;
+        $request->picture->move(public_path('uploads/materi'), $newName);
 
         $postedData = [
-            'picture' => $filename,
+            // 'picture' => $filename,
+            'picture' => $newName
         ];
         $dtMateri = MateriModel::findOrFail($id);
         if ($dtMateri->update($postedData)) {
@@ -159,14 +164,17 @@ class MateriController extends Controller
         $dtMateri = MateriModel::findOrFail($id);
         $picture = $dtMateri->picture;
         $file_path = public_path().'/uploads/materi/'.$picture;
+        
+        //--Delete file di DB:
         $updateData['picture'] = null;
-        if(file_exists($file_path)){
-            unlink($file_path);
-            if ($dtMateri->update($updateData)) {
-                return redirect()->back()->with('success', 'File gambar berhasil di hapus.');
-            }else{
-                return redirect()->back()->with('error', 'Error pada saat hapus file gambar. Silahkan hubungi Administrator.');
-            }
-       }
+        if ($dtMateri->update($updateData)) {
+            //--Delete file di Path:
+            // ($thisVar != $thatVar ?: doThis()); //--1 line IF without else
+            // if ($thisVar == $thatVar) doThis();
+            if(file_exists($file_path)) unlink($file_path);           
+            return redirect()->back()->with('success', 'File gambar berhasil di hapus.');
+        }else{
+            return redirect()->back()->with('error', 'Error pada saat hapus file gambar. Silahkan hubungi Administrator.');
+        }
     }
 }

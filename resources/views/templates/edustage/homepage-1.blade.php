@@ -31,7 +31,7 @@
                 type="text"
                 class="form-control"
                 id="search_input"
-                placeholder="Cari disini..."
+                placeholder="Search Here"
               />
               <button type="submit" class="btn"></button>
               <span
@@ -117,7 +117,7 @@
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    ><i class="ti-user"></i>&nbsp;&nbsp;<?=Auth::user()->name;?></a
+                    ><i class="ti-user"></i>&nbsp;&nbsp;<?=Auth::user()->username;?></a
                   >
                   <ul class="dropdown-menu">
                     <li class="nav-item">
@@ -156,7 +156,7 @@
                 </h2>
                 <div>
                   <a href="#" class="primary-btn2 mb-3 mb-sm-0">pelajari</a>
-                  <a href="{{url('/#pilihan-kursus')}}" class="primary-btn ml-sm-3 ml-0">lihat kursus</a>
+                  <a href="#" class="primary-btn ml-sm-3 ml-0">lihat kursus</a>
                 </div>
               </div>
             </div>
@@ -224,7 +224,7 @@
     <!--================ End Feature Area =================-->
 
     <!--================ Start Popular Courses Area =================-->
-    <div class="popular_courses" id="pilihan-kursus">
+    <div class="popular_courses">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-5">
@@ -289,33 +289,35 @@
           <div class="col-lg-7">
             <div class="row clock_sec clockdiv" id="clockdiv">
               <div class="col-lg-12">
-                <h1 class="mb-3">Buruaaan Daftar Sekarang!!</h1>
+                <h1 class="mb-3">Register Now</h1>
                 <p>
-                  Gabung bersama kami, untuk merasakan kesuksesan yang nyata.
+                  There is a moment in the life of any aspiring astronomer that
+                  it is time to buy that first telescope. It’s exciting to think
+                  about setting up your own viewing station.
                 </p>
               </div>
               <div class="col clockinner1 clockinner">
-                <h1 class="days">5</h1>
-                <span class="smalltext">Hari</span>
+                <h1 class="days">150</h1>
+                <span class="smalltext">Days</span>
               </div>
               <div class="col clockinner clockinner1">
                 <h1 class="hours">23</h1>
-                <span class="smalltext">Jam</span>
+                <span class="smalltext">Hours</span>
               </div>
               <div class="col clockinner clockinner1">
                 <h1 class="minutes">47</h1>
-                <span class="smalltext">Menit</span>
+                <span class="smalltext">Mins</span>
               </div>
               <div class="col clockinner clockinner1">
-                <h1 class="seconds">29</h1>
-                <span class="smalltext">Detik</span>
+                <h1 class="seconds">59</h1>
+                <span class="smalltext">Secs</span>
               </div>
             </div>
           </div>
           <div class="col-lg-4 offset-lg-1">
             <div class="register_form">
-              <h3>Cobain Kursus nya Yuuk</h3>
-              <p>Mumpung masih gratis..tis..</p>
+              <h3>Courses for Free</h3>
+              <p>It is high time for learning</p>
               <form
                 class="form_area"
                 id="myForm"
@@ -326,25 +328,22 @@
                   <div class="col-lg-12 form_group">
                     <input
                       name="name"
-                      placeholder="Nama kamu"
+                      placeholder="Your Name"
                       required=""
                       type="text"
-                      autocomplete="off"
                     />
                     <input
-                      name="telp"
-                      placeholder="Telp yg aktif"
+                      name="name"
+                      placeholder="Your Phone Number"
                       required=""
                       type="tel"
-                      autocomplete="off"
                     />
                     <input
                       name="email"
-                      placeholder="Alamat Email"
+                      placeholder="Your Email Address"
                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                       required=""
                       type="email"
-                      autocomplete="off"
                     />
                   </div>
                   <div class="col-lg-12 text-center">
@@ -365,9 +364,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-5">
             <div class="main_title">
-              <h2 class="mb-3">Trainer yang mumpuni</h2>
+              <h2 class="mb-3">Our Expert Trainers</h2>
               <p>
-                Tenaga pengajar yang bukan kaleng-kaleng, alias pengajar yang memang ahli di bidangnya.
+                Replenish man have thing gathering lights yielding shall you
               </p>
             </div>
           </div>
@@ -409,44 +408,70 @@
         <div class="row justify-content-center">
           <div class="col-lg-5">
             <div class="main_title">
-              <h2 class="mb-3 text-white">Ikuti Event Kami..</h2>
+              <h2 class="mb-3 text-white">Upcoming Events</h2>
               <p>
-                Seru, Edukatif dan menyenangkan semua peserta.
+                Replenish man have thing gathering lights yielding shall you
               </p>
             </div>
           </div>
         </div>
         <div class="row">
-        @foreach($dtEvents as $rowEvent)
           <div class="col-lg-6 col-md-6">
             <div class="single_event position-relative">
               <div class="event_thumb">
-                <img src="{{ url('images/events/'.$rowEvent->picture) }}" alt="" width="100%"/>
+                <img src="{{ url('t_edustage') }}/img/event/e1.jpg" alt="" />
               </div>
               <div class="event_details">
                 <div class="d-flex mb-4">
-                  <div class="date"><span>{{ date('d', strtotime($rowEvent->event_start)) }}</span> {{ date('M', strtotime($rowEvent->event_start)) }}</div>
+                  <div class="date"><span>15</span> Jun</div>
+
                   <div class="time-location">
                     <p>
-                      <span class="ti-time mr-2"></span> {{ date('g:i a', strtotime($rowEvent->event_start)) }} - {{ date('g:i a', strtotime($rowEvent->event_end)) }}
+                      <span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM
                     </p>
                     <p>
-                      <span class="ti-location-pin mr-2"></span> {{ $rowEvent->location }}
+                      <span class="ti-location-pin mr-2"></span> Hilton Quebec
                     </p>
                   </div>
                 </div>
                 <p>
-                  {{ $rowEvent->short_desc }}
+                  One make creepeth man for so bearing their firmament won't
+                  fowl meat over seas great
                 </p>
-                <a href="{{ url('event/'.$rowEvent->slug) }}" class="primary-btn rounded-0 mt-3">View Details</a>
+                <a href="#" class="primary-btn rounded-0 mt-3">View Details</a>
               </div>
             </div>
           </div>
-        @endforeach
+          <div class="col-lg-6 col-md-6">
+            <div class="single_event position-relative">
+              <div class="event_thumb">
+                <img src="{{ url('t_edustage') }}/img/event/e2.jpg" alt="" />
+              </div>
+              <div class="event_details">
+                <div class="d-flex mb-4">
+                  <div class="date"><span>15</span> Jun</div>
+
+                  <div class="time-location">
+                    <p>
+                      <span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM
+                    </p>
+                    <p>
+                      <span class="ti-location-pin mr-2"></span> Hilton Quebec
+                    </p>
+                  </div>
+                </div>
+                <p>
+                  One make creepeth man for so bearing their firmament won't
+                  fowl meat over seas great
+                </p>
+                <a href="#" class="primary-btn rounded-0 mt-3">View Details</a>
+              </div>
+            </div>
+          </div>
 
           <div class="col-lg-12">
             <div class="text-center pt-lg-5 pt-3">
-              <a href="{{ url('event') }}" class="event-link">
+              <a href="#" class="event-link">
                 View All Event <img src="{{ url('t_edustage') }}/img/next.png" alt="" />
               </a>
             </div>
@@ -472,23 +497,108 @@
 
         <div class="row">
           <div class="testi_slider owl-carousel">
-          @foreach($dtTestimonials as $rowTesti)
             <div class="testi_item">
               <div class="row">
                 <div class="col-lg-4 col-md-6">
-                  <img src="{{ url('images/testimonis/'.$rowTesti->picture) }}" alt="" />
+                  <img src="{{ url('t_edustage') }}/img/testimonials/t1.jpg" alt="" />
                 </div>
                 <div class="col-lg-8">
                   <div class="testi_text">
-                    <h4>{{ $rowTesti->name }}</h4>
+                    <h4>Elite Martin</h4>
                     <p>
-                      {{ $rowTesti->comment }}
+                      Him, made can't called over won't there on divide there
+                      male fish beast own his day third seed sixth seas unto.
+                      Saw from
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          @endforeach
+            <div class="testi_item">
+              <div class="row">
+                <div class="col-lg-4 col-md-6">
+                  <img src="{{ url('t_edustage') }}/img/testimonials/t2.jpg" alt="" />
+                </div>
+                <div class="col-lg-8">
+                  <div class="testi_text">
+                    <h4>Davil Saden</h4>
+                    <p>
+                      Him, made can't called over won't there on divide there
+                      male fish beast own his day third seed sixth seas unto.
+                      Saw from
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testi_item">
+              <div class="row">
+                <div class="col-lg-4 col-md-6">
+                  <img src="{{ url('t_edustage') }}/img/testimonials/t1.jpg" alt="" />
+                </div>
+                <div class="col-lg-8">
+                  <div class="testi_text">
+                    <h4>Elite Martin</h4>
+                    <p>
+                      Him, made can't called over won't there on divide there
+                      male fish beast own his day third seed sixth seas unto.
+                      Saw from
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testi_item">
+              <div class="row">
+                <div class="col-lg-4 col-md-6">
+                  <img src="{{ url('t_edustage') }}/img/testimonials/t2.jpg" alt="" />
+                </div>
+                <div class="col-lg-8">
+                  <div class="testi_text">
+                    <h4>Davil Saden</h4>
+                    <p>
+                      Him, made can't called over won't there on divide there
+                      male fish beast own his day third seed sixth seas unto.
+                      Saw from
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testi_item">
+              <div class="row">
+                <div class="col-lg-4 col-md-6">
+                  <img src="{{ url('t_edustage') }}/img/testimonials/t1.jpg" alt="" />
+                </div>
+                <div class="col-lg-8">
+                  <div class="testi_text">
+                    <h4>Elite Martin</h4>
+                    <p>
+                      Him, made can't called over won't there on divide there
+                      male fish beast own his day third seed sixth seas unto.
+                      Saw from
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testi_item">
+              <div class="row">
+                <div class="col-lg-4 col-md-6">
+                  <img src="{{ url('t_edustage') }}/img/testimonials/t2.jpg" alt="" />
+                </div>
+                <div class="col-lg-8">
+                  <div class="testi_text">
+                    <h4>Davil Saden</h4>
+                    <p>
+                      Him, made can't called over won't there on divide there
+                      male fish beast own his day third seed sixth seas unto.
+                      Saw from
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -499,22 +609,76 @@
     <footer class="footer-area section_gap">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6 single-footer-widget">
-            <h4>Tentang Kami</h4>
-            <p>Kurses adalah sebuah perusahan startup yang sedang berkembang di daerah tertentu, yang bergerak di bidang Edutaintment.</p>
+          <div class="col-lg-2 col-md-6 single-footer-widget">
+            <h4>Top Products</h4>
+            <ul>
+              <li><a href="#">Managed Website</a></li>
+              <li><a href="#">Manage Reputation</a></li>
+              <li><a href="#">Power Tools</a></li>
+              <li><a href="#">Marketing Service</a></li>
+            </ul>
           </div>
-          <div class="col-lg-4 col-md-6 single-footer-widget">
+          <div class="col-lg-2 col-md-6 single-footer-widget">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Brand Assets</a></li>
+              <li><a href="#">Investor Relations</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 single-footer-widget">
             <h4>Features</h4>
             <ul>
-              <li><a href="#">Menu-1</a></li>
-              <li><a href="#">Menu-2</a></li>
-              <li><a href="#">Menu-3</a></li>
-              <li><a href="#">Menu-4</a></li>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Brand Assets</a></li>
+              <li><a href="#">Investor Relations</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 single-footer-widget">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Guides</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">Experts</a></li>
+              <li><a href="#">Agencies</a></li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-6 single-footer-widget">
-            <h4>Alamat</h4>
-            <p>Jl. Besar, Kelurahan Agung, Cimanggis. Baturaja - Sulsel</p>
+            <h4>Newsletter</h4>
+            <p>You can trust us. we only send promo offers,</p>
+            <div class="form-wrap" id="mc_embed_signup">
+              <form
+                target="_blank"
+                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                method="get"
+                class="form-inline"
+              >
+                <input
+                  class="form-control"
+                  name="EMAIL"
+                  placeholder="Your Email Address"
+                  onfocus="this.placeholder = ''"
+                  onblur="this.placeholder = 'Your Email Address'"
+                  required=""
+                  type="email"
+                />
+                <button class="click-btn btn btn-default">
+                  <span>subscribe</span>
+                </button>
+                <div style="position: absolute; left: -5000px;">
+                  <input
+                    name="b_36c4fd991d266f23781ded980_aefe40901a"
+                    tabindex="-1"
+                    value=""
+                    type="text"
+                  />
+                </div>
+
+                <div class="info"></div>
+              </form>
+            </div>
           </div>
         </div>
         <div class="row footer-bottom d-flex justify-content-between">

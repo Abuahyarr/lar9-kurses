@@ -82,7 +82,8 @@
                   <span class="badge badge-success">Sudah dikerjakan</span>
                   @break
                   @case('disetujui')
-                  <span class="badge badge-success">Tugas disetujui</span>
+                  <span class="badge badge-primary">Tugas disetujui</span>
+                  @break
                   @case('ditolak')
                   <span class="badge badge-danger">Tugas ditolak</span>
                   @break
@@ -90,12 +91,17 @@
                   <span class="badge badge-warning">Belum dikerjakan</span>
                   @endswitch
                 </dd>
+                <dt class="col-sm-3">Catatan Murid</dt>
+                <dd class="col-sm-9">: {{$dtTugas->exeNotes }}</dd>
                 <dt class="col-sm-3">Tanggal Update</dt>
                 <dd class="col-sm-9">: {{$dtTugas->updated_at }}</dd>
                 <dt class="col-sm-3">Diupdate oleh</dt>
                 <dd class="col-sm-9">: {{$dtTugas->doneBy }}</dd>
-                <dt class="col-sm-3">Catatan</dt>
-                <dd class="col-sm-9">: {{$dtTugas->exeNotes }}</dd>
+                <dt class="col-sm-3">Nilai</dt>
+                <dd class="col-sm-9">: {{$dtTugas->points }}</dd>
+                <dt class="col-sm-3">Catatan Pemeriksa</dt>
+                <dd class="col-sm-9">: {{$dtTugas->notes2 }}</dd>
+                
               </dl>
             </div>
           </div>

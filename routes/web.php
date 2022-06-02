@@ -71,6 +71,7 @@ Route::delete('/admin/materi/delete-picture/{id}', [MateriController::class, 're
 Route::resource('admin/materi', MateriController::class);
 
 //--TUGAS:
+Route::get('admin/tugas/{tugasId}/check', [TugasController::class, 'check']);
 Route::resource('admin/tugas', TugasController::class);
 
 //--TUGAS Execution:

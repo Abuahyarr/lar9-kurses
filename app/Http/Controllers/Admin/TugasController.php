@@ -69,6 +69,15 @@ class TugasController extends Controller
         return view('admin.tugas.v_show', $this->data);
     }
 
+    public function check($tugasId)
+    {
+        $dtTugas = Tugas::cekTugas($tugasId);
+        // dd($dtTugas);
+        $this->data['dtTugas'] = $dtTugas;
+        $this->data['pageTitle'] = 'Data Tugas Siswa';
+        return view('admin.tugas.v_check', $this->data);
+    }
+
     public function edit($id)
     {
         $dtTugas = Tugas::findOrFail($id);

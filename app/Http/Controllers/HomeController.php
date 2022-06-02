@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Trainers;
+use App\Models\Events;
+use App\Models\Testimonials;
 
 class HomeController extends Controller
 {
@@ -31,7 +33,13 @@ class HomeController extends Controller
 
         //--Data Trainers:
         $this->data['dtTrainers'] = Trainers::all();
-        // dd($this->data);
+
+        //--Data Events:
+        $this->data['dtEvents'] = Events::all();
+
+        //--Data Testimonials:
+        $this->data['dtTestimonials'] = Testimonials::all();
+        
         return view('templates/edustage/homepage', $this->data);
     }
 

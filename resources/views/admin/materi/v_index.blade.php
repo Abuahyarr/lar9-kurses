@@ -69,16 +69,16 @@
                   <td>{{$no++}}</td>
                   <td>
                     @if(!empty($row->picture))
-                    <img class="profile-user-img img-fluid img-circle" src="{{ url('uploads/materi/'.$row->picture) }}" alt="Materi Icon">
+                    <img class="profile-user-img img-fluid" src="{{ url('uploads/materi/'.$row->picture) }}" alt="Materi Icon">
                     @else
-                    <img class="profile-user-img img-fluid img-circle" src="{{ url('images/noimage.jpg') }}" alt="Materi Icon">
+                    <img class="profile-user-img img-fluid" src="{{ url('images/noimage.jpg') }}" alt="Materi Icon">
                     @endif
                   </td>
                   <td>{{$row->title}}</td>
                   <td>{{$row->posted_dt}}</td>
                   <td>{{$row->category}}</td>
                   <td>{{$row->status}}</td>
-                  <td><a href="http://{{$row->video_url }}">Cek dsini</a></td>
+                  <td><a href="http://{{$row->video_url }}" target="_blank">Cek dsini</a></td>
                   <td>
                     <a href="{{ url('/admin/materi/'.$row->id) }}" class="btn btn-sm btn-info"><i class="fa fa-search"></i>&nbsp;Detail</a>
                     <!-- <a href="{{ url('/admin/materi/'.$row->id.'/edit') }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>&nbsp;Edit</a> -->

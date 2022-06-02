@@ -52,6 +52,7 @@
                   <th>Judul</th>
                   <th>Batas waktu</th>
                   <th>Status</th> 
+                  <th>Nilai</th>
                   <th>Tgl Update</th>
                   <th>Keterangan</th>
                   <th>Aksi</th>
@@ -71,7 +72,7 @@
                     <span class="badge badge-success">Sudah dikerjakan</span>
                     @break
                     @case('disetujui')
-                    <span class="badge badge-success">Tugas disetujui</span>
+                    <span class="badge badge-primary">Tugas disetujui</span>
                     @break
                     @case('ditolak')
                     <span class="badge badge-danger">Tugas ditolak</span>
@@ -80,7 +81,8 @@
                     <span class="badge badge-warning">Belum dikerjakan</span>
                     @endswitch
                   </td>
-                  <!-- <td class='text-center' style="{{ ($row->status) ? null : 'color: red'}}"><?= ($row->status) ? $row->status : 'Belum dikerjakan'?></td> -->
+                  <!-- <td class='text-center' style="{{ ($row->status) ? null : 'color: red'}}"><?//($row->status) ? $row->status : 'Belum dikerjakan'?></td> -->
+                  <td>{{($row->points) ? $row->points : '---'}}</td>
                   <td>{{($row->tex_update) ? $row->tex_update : '---'}}</td>
                   <td>{{($row->tex_notes )? $row->tex_notes : '---'}}</td>
                   <td>

@@ -21,6 +21,7 @@
             <a href="{{ url('/admin/tugas') }}" class="btn btn-sm btn-outline-info"><i class="fa fa-chevron-left"></i>&nbsp;List Data</a>
             @if($loggedinInfo->role_id != 1)
             <a href="{{ url('/admin/tugas/'.$dtTugas->id.'/edit') }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>&nbsp;Edit Data</a>
+            <a href="{{ url('/admin/tugas/'.$dtTugas->id.'/check') }}" class="btn btn-sm btn-info"><i class="fa fa-search"></i>&nbsp;Periksa Tugas Murid</a>
             <button type="button" class="btn btn-sm btn-danger float-right" data-toggle="modal" data-target="#modal-delete-{{$dtTugas->id}}"><i class="fa fa-trash"></i>&nbsp;Hapus Data</button>
             @endif
           </div>
